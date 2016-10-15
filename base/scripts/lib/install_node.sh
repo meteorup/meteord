@@ -1,17 +1,15 @@
 #!/bin/bash
 set -e
-NODE_VERSION=4.4.7
-NODE_ARCH=x64
 
-# check we need to do this or not
+# install nvm
+curl -o- 'http://git.oschina.net/romejiang/nvm/raw/master/install.sh' | NVM_SOURCE='http://git.oschina.net/romejiang/nvm/raw/master' bash
 
-NODE_DIST=node-v${NODE_VERSION}-linux-${NODE_ARCH}
+[ -s "$HOME/.nvm/nvm.sh" ] && . "$HOME/.nvm/nvm.sh"
 
-cd /tmp
-curl -O -L http://nodejs.org/dist/v${NODE_VERSION}/${NODE_DIST}.tar.gz
-tar xvzf ${NODE_DIST}.tar.gz
-rm -rf /opt/nodejs
-mv ${NODE_DIST} /opt/nodejs
+export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
+export NVM_IOJS_ORG_MIRROR=http://npm.taobao.org/mirrors/iojs
 
-ln -sf /opt/nodejs/bin/node /usr/bin/node
-ln -sf /opt/nodejs/bin/npm /usr/bin/npm
+nvm install 0.10.33  ## 1.0.2
+nvm install 0.10.40 ## v1.2
+nvm install 0.10.41 ## v1.3
+nvm install 4.4.7 ## v1.4
