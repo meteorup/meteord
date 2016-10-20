@@ -25,6 +25,7 @@ elif [ "$METEOR_VERSION"x = "1.0"x ]; then
 fi
 
 cd bundle/programs/server/
+shopt -s expand_aliases
 alias cnpm="npm --registry=https://registry.npm.taobao.org --cache=$HOME/.npm/.cache/cnpm --disturl=https://npm.taobao.org/dist --userconfig=$HOME/.cnpmrc"
 cnpm i
 cd ../../
@@ -49,7 +50,7 @@ fi
 
 # Honour already existing PORT setup
 export PORT=${PORT:-80}
-
+node -v
 echo "=> Starting meteor app on port:$PORT"
 node main.js
 
